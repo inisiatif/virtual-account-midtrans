@@ -2,8 +2,10 @@
 
 namespace Inisiatif\Midtrans\Contract;
 
+use Webmozart\Assert\Assert;
 use Inisiatif\Midtrans\Model\Customer;
 use Inisiatif\Midtrans\Model\TransactionItem;
+use Inisiatif\Midtrans\Factory\MidtransFactory;
 use Inisiatif\Midtrans\Model\TransactionDetail;
 use Inisiatif\Midtrans\Response\ChargeResponse;
 
@@ -132,14 +134,11 @@ abstract class ChannelContract
     /**
      * @param array $items
      * @return ChannelContract
-     * @throws \Exception
      */
     public function setItems(array $items): self
     {
         foreach ($items as $item) {
-            if (!$item instanceof TransactionItem) {
-                throw new \Exception("This item mus be instanceof TransactionDetail");
-            }
+            Assert::isInstanceOf($item, TransactionItem::class);
         }
 
         $this->items = $items;
@@ -156,6 +155,20 @@ abstract class ChannelContract
     }
 
     /**
+     * @return mixed
+     */
+    public function charge()
+    {
+        $payloads = $this->makePayloads()->getPayloads();
+
+        $factory = MidtransFactory::factory($this->getKey(), $this->isProduction());
+
+        $response = $factory::charge($payloads);
+
+        return $this->makeResponse($response);
+    }
+
+    /**
      * @param array $payloads
      */
     public function setPayloads(array $payloads): void
@@ -167,11 +180,6 @@ abstract class ChannelContract
      * @return mixed
      */
     abstract protected function makePayloads();
-
-    /**
-     * @return mixed
-     */
-    abstract public function charge();
 
     /**
      * @param $rawResponse

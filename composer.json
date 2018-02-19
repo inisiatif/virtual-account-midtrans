@@ -28,7 +28,8 @@
     "php": ">=7.1",
     "ext-curl": "*",
     "ext-json": "*",
-    "veritrans/veritrans-php": "dev-master"
+    "veritrans/veritrans-php": "dev-master",
+    "beberlei/assert": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.0"

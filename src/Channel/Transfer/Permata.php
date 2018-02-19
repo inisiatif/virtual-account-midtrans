@@ -1,28 +1,15 @@
 <?php
 
-namespace Inisiatif\Midtrans\Channel;
+namespace Inisiatif\Midtrans\Channel\Transfer;
 
-use Inisiatif\Midtrans\Factory\MidtransFactory;
-use Inisiatif\Midtrans\Contract\ChannelContract;
+use Webmozart\Assert\Assert;
+use Inisiatif\Midtrans\Model\Customer;
+use Inisiatif\Midtrans\Model\TransactionDetail;
 use Inisiatif\Midtrans\Response\ChargeResponse;
+use Inisiatif\Midtrans\Contract\ChannelContract;
 
 class Permata extends ChannelContract
 {
-
-    /**
-     * @return ChargeResponse
-     * @throws \Exception
-     */
-    public function charge()
-    {
-        $payloads = $this->makePayloads()->getPayloads();
-
-        $factory = MidtransFactory::factory($this->getKey(), $this->isProduction());
-
-        $response = $factory::charge($payloads);
-
-        return $this->makeResponse($response);
-    }
 
     /**
      * @return $this
@@ -30,17 +17,9 @@ class Permata extends ChannelContract
      */
     protected function makePayloads()
     {
-        if (is_null($this->getCustomer())) {
-            throw new \Exception('Set customer first');
-        }
-
-        if (is_null($this->getTransaction())) {
-            throw new \Exception('Set transaction first');
-        }
-
-        if (is_null($this->getItems())) {
-            throw new \Exception('Set items first');
-        }
+        Assert::isInstanceOf($this->getCustomer(), Customer::class);
+        Assert::isInstanceOf($this->getTransaction(), TransactionDetail::class);
+        Assert::isArray($this->getItems());
 
         $payloads = array_merge([
             'payment_type' => 'bank_transfer',

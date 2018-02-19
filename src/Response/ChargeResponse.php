@@ -47,6 +47,11 @@ class ChargeResponse
     /**
      * @var string
      */
+    protected $virtualAccountCode;
+
+    /**
+     * @var string
+     */
     protected $orderAmount;
 
     /**
@@ -233,5 +238,21 @@ class ChargeResponse
     public function setRawResponse($rawResponse): void
     {
         $this->rawResponse = $rawResponse;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVirtualAccountCode(): string
+    {
+        return $this->virtualAccountCode;
+    }
+
+    /**
+     * @param string $virtualAccountCode
+     */
+    public function setVirtualAccountCode(string $virtualAccountCode): void
+    {
+        $this->virtualAccountCode = $virtualAccountCode;
     }
 }

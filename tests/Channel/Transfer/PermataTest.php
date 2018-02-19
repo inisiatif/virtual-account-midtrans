@@ -1,10 +1,10 @@
 <?php
 
-namespace Inisiatif\Midtrans\Tests\Channel;
+namespace Inisiatif\Midtrans\Tests\Channel\Transfer;
 
 use Inisiatif\Midtrans\Tests\TestCase;
-use Inisiatif\Midtrans\Channel\Permata;
 use Inisiatif\Midtrans\Response\ChargeResponse;
+use Inisiatif\Midtrans\Channel\Transfer\Permata;
 
 class PermataTest extends TestCase
 {

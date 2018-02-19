@@ -141,10 +141,7 @@ class Customer extends ModelContact
         return array(
             'first_name' => $this->getFirstName(),
             'last_name' => $this->getLastName(),
-            'email' => $this->getEmail(),
-            'phone' => $this->getPhone(),
-            'billing_address' => $this->getBillingAddress(),
-            'shipping_address' => $this->getShippingAddress()
+            'email' => '',
         );
     }
 
