@@ -47,6 +47,7 @@ class Permata extends ChannelContract
         $response->setStatusCode($rawResponse->status_code);
         $response->setMessage($rawResponse->status_message);
         $response->setType($rawResponse->payment_type);
+        $response->setDateTime($rawResponse->transaction_time);
         $response->setStatus($rawResponse->transaction_status);
         $response->setFraud($rawResponse->fraud_status);
         $response->setOrderId($rawResponse->order_id);

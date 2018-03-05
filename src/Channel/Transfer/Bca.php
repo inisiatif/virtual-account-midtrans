@@ -53,6 +53,7 @@ class Bca extends ChannelContract
         $response->setMessage($rawResponse->status_message);
         $response->setType($rawResponse->payment_type);
         $response->setStatus($rawResponse->transaction_status);
+        $response->setDateTime($rawResponse->transaction_time);
         $response->setFraud($rawResponse->fraud_status);
         $response->setOrderId($rawResponse->order_id);
         $response->setOrderAmount($rawResponse->gross_amount);
