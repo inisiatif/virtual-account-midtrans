@@ -243,7 +243,7 @@ class ChargeResponse
     /**
      * @return string
      */
-    public function getVirtualAccountCode(): string
+    public function getVirtualAccountCode(): ?string
     {
         return $this->virtualAccountCode;
     }
