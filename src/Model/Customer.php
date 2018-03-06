@@ -141,7 +141,7 @@ class Customer extends ModelContact
         return array(
             'first_name' => $this->getFirstName(),
             'last_name' => $this->getLastName(),
-            'email' => '',
+            'email' => $this->getEmail() ? $this->getEmail() : '',
         );
     }
 

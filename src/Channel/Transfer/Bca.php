@@ -30,7 +30,8 @@ class Bca extends ChannelContract
         $payloads = array_merge([
             'payment_type' => 'bank_transfer',
             'bank_transfer' => [
-                'bank' => 'bca'
+                'bank' => 'bca',
+                'va_number' => $this->getTransaction()->getId()
             ],
             'customer_details' => $this->getCustomer()->toArray(),
             'item_details' => $items,

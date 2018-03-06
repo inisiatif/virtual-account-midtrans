@@ -25,6 +25,7 @@ class Permata extends ChannelContract
             'payment_type' => 'bank_transfer',
             'bank_transfer' => [
                 'bank' => 'permata',
+                'va_number' => $this->getTransaction()->getId(),
                 'permata' => [
                     'recipient_name' => $this->getCustomer()->getFullName()
                 ]
