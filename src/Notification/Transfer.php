@@ -1,6 +1,6 @@
 <?php
 
-namespace Inisiatif\Midtrans;
+namespace Inisiatif\Midtrans\Notification;
 
 use Inisiatif\Midtrans\Factory\MidtransFactory;
 
