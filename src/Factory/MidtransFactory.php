@@ -4,6 +4,7 @@ namespace Inisiatif\Midtrans\Factory;
 
 use Veritrans_Config as MidtransConfig;
 use Veritrans_VtDirect as MidtransDirect;
+use Veritrans_Notification as MidtransNotification;
 
 class MidtransFactory
 {
@@ -41,5 +42,20 @@ class MidtransFactory
     public static function production($key)
     {
         return static::factory($key);
+    }
+
+    /**
+     * @param $key
+     * @param bool $production
+     * @param string $resource
+     * @return MidtransNotification
+     */
+    public static function notification($key, $production = true, $resource = 'php://input')
+    {
+        MidtransConfig::$serverKey = $key;
+
+        MidtransConfig::$isProduction = $production;
+
+        return new MidtransNotification($resource);
     }
 }
