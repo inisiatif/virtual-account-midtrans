@@ -15,4 +15,6 @@ class TransactionStatus
     const CANCEL = 'cancel';
 
     const EXPIRE = 'expire';
+
+    const SETTLEMENT = 'settlement';
 }
