@@ -53,7 +53,6 @@ class GoPay extends ChannelContract
         $response->setFraud($rawResponse->fraud_status);
         $response->setOrderId($rawResponse->order_id);
         $response->setOrderAmount($rawResponse->gross_amount);
-        $response->setVirtualAccount(end($rawResponse->va_numbers)->va_number);
         $response->setRawResponse($rawResponse);
 
         return $response;
