@@ -99,7 +99,7 @@ class ChargeResponse
     /**
      * @return string
      */
-    public function getFraud(): string
+    public function getFraud(): ?string
     {
         return $this->fraud;
     }
@@ -179,7 +179,7 @@ class ChargeResponse
     /**
      * @return string
      */
-    public function getVirtualAccount(): string
+    public function getVirtualAccount(): ?string
     {
         return $this->virtualAccount;
     }
